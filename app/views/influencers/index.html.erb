@@ -58,11 +58,20 @@
               <span class="media-handle">${handle}</span>
             </small>
           </td>
-          <td><i class="fas fa-times"></i></td>
+          <td>
+            <p>Followers</p>
+          </td>
+          <td>
+            <p>Engagement</p>
+          </td>
+          <td class="deleteButton">
+            <i class="fas fa-times"></i>
+          </td>
         </tr>`)
 
+      $(".deleteButton").click(function(){
+      $(this).parents('tr').first().remove();
+      });
     });
   });
-
-
 </script>
