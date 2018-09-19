@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  social_media: MyString
+  followers: 1
+  engagement: 1
+
+two:
+  name: MyString
+  social_media: MyString
+  followers: 1
+  engagement: 1
