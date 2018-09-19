@@ -31,6 +31,14 @@
 
     </table>
   </div>
+
+  <div class="sortBy">
+    Sort By:
+    <select>
+      <option>Engagement(High-Low)</option>
+    </select>
+  </div>
+
 </div>
 
 <!-- <script src="https://code.jquery.com/jquery-latest.js"></script> -->
@@ -43,6 +51,9 @@
       var imageLink = $(parent).find('.avatar').find('img').attr('src');
       var name = $(parent).find('.name').text()
       var handle = $(parent).find('.media-handle').text()
+      var followers = $(parent).find('').text()
+      var engagement = $(parent).find('').text()
+
       console.log({imageLink, name, handle})
 
       $('#table2').append(`<tr id="table2_row">
@@ -59,10 +70,10 @@
             </small>
           </td>
           <td>
-            <p>Followers</p>
+            <h3>${followers}</h3>
           </td>
           <td>
-            <p>Engagement</p>
+            <h3>${engagement}</h3>
           </td>
           <td class="deleteButton">
             <i class="fas fa-times"></i>
@@ -73,5 +84,89 @@
       $(this).parents('tr').first().remove();
       });
     });
+
+
+//SORT
+    // $(document).ready(function() {
+  //Set id field to 1
+  var id = $('#UserID');
+  id.val("1");
+
+  // //Add 1 to the id in textbox
+  // function incID(){
+  //   var str = id.val();
+  //   var int = parseInt(str);
+  //   var idVal = int + 1;
+  //   id.val(idVal.toString());
+  // }
+  // //When button clicked
+  // $('button').on('click', function(){
+  //   //create a new object
+  //   var obj = new Object();
+  //   //pass value dynamically from input box
+  //   obj.id = $('#UserID').val();
+  //   obj.name = $('#UserName').val();
+  //   obj.occupation = $("#UserOccupation").val();
+  //   //display data to the table
+  //   var addrow = "<tr><td class='col-id'>" + obj.id + "</td><td class='col-name'>" + obj.name + "</td><td class='col-occupation'>"+ obj.occupation +"</td></tr>";
+  //   $("table tbody").append(addrow);
+  //   //Add 1 to id field
+  //   incID();
+  // });
+
+  function sortByNumber(rows, selector, ascending) {
+    rows.sort(function(a, b) {
+      var numberA = parseInt($(selector, a).text(), 10);
+      var numberB = parseInt($(selector, b).text(), 10);
+      if (ascending)
+        return numberA - numberB;
+      else
+        return numberB - numberA;
+    });
+
+    return rows;
+  }
+
+  function sortByText(rows, selector, ascending) {
+    rows.sort(function(a, b) {
+      var textA = $(selector, a).text();
+      var textB = $(selector, b).text();
+      if (ascending)
+        return textA.localeCompare(textB);
+      else
+        return textB.localeCompare(textA);
+    });
+
+    return rows;
+  }
+
+  function sortAllBy(field) {
+    var rows = $('table tbody tr').toArray();
+
+    switch (field) {
+      case 'ID':
+        rows = sortByNumber(rows, 'td.col-id', true);
+        break;
+      case 'Name':
+        rows = sortByText(rows, 'td.col-name', true);
+        break;
+      case 'Occupation':
+        rows = sortByText(rows, 'td.col-occupation', true);
+        break;
+      default:
+        console.error('Undefined sort field ' + field);
+        break;
+    }
+
+    for (var i = 0; i < rows.length; i++) {
+      $('table tbody').append(rows[i]);
+    }
+  }
+
+  $('select').on('change', function() {
+    sortAllBy(this.value);
   });
+});
+
+
 </script>
