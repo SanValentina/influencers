@@ -6,13 +6,13 @@
           <% @influencers.each do |influencer| %>
           <tr class="influencer">
             <td>
-              <img src="https://via.placeholder.com/350x150" class="avatar"/> <br />
+              <%= image_tag influencer.influencer_instagram_profile_image %>
             </td>
             <td>
-              <h3 class="name"><%= influencer.name %></h3>
+              <h3 class="name"><%= influencer.influencer_full_name %></h3>
               <small class="handle">
                 <i class="fab fa-instagram"></i>
-                <span class="media-handle"><%= influencer.social_media %></span>
+                <span class="media-handle"><%= influencer.influencer_instagram_username %></span>
               </small>
             </td>
             <td class="addButton">

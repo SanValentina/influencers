@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2018_09_19_100234) do
 
-  create_table "influencers", force: :cascade do |t|
+  create_table "influencers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "social_media"
     t.integer "followers"
