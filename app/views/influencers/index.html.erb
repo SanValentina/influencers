@@ -1,6 +1,7 @@
 <div class="container">
   <div class="tab">
     <table id="table1">
+
       <tr id="table1_row">
         <% @influencers.each do |influencer| %>
         <tr class="influencer">
@@ -27,3 +28,43 @@
     </table>
   </div>
 </div>
+
+<!-- <script src="https://code.jquery.com/jquery-latest.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $(".addButton").click(function(e){
+      var parent = e.target.parentNode.parentNode
+      console.log(e)
+      var imageLink = $(parent).find('.avatar')[0].src
+      var name = $(parent).find('.name').text()
+      var handle = $(parent).find('.media-handle').text()
+      console.log({imageLink, name, handle})
+
+      $('#table2').append(`<tr>
+          <td>
+          <img src="${imageLink}" class="avatar"/> <br />
+          </td>
+          <td>
+            <h3 class="name">${name}</h3>
+            <small class="handle">
+              <i class="fab fa-instagram"></i>
+              <span class="media-handle">${handle}</span>
+            </small>
+          </td>
+        </tr>`)
+
+      // var selected = e.target.classList[0].replace('add_', '')
+      // console.log(selected)
+      // var parentCell = e.target.parentNode.parentNode
+      // console.log({e, parentCell})
+      // var image = parentCell.children[0].children[0]
+      // console.log({outerHTML})
+      // var clickedHTML = e.target
+      // console.log(e, clickedHTML)
+      // $("#table1_row").clone().appendTo("#table2");
+    });
+  });
+
+
+</script>
