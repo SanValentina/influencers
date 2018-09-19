@@ -1,44 +1,65 @@
 // Place all the styles related to the app_influencers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//BODY
 .container {
     margin-right: 15px;
     margin-left: 15px;
+    overflow:hidden;
 }
+
+
+//TABLE
+#table2 {
+  margin-left: 80px;
+}
+  .table_title{
+    margin-left: 80px;
+  }
+
+#table2_row{
+  margin-right:80px;
+}
+tr{
+  transition:all .25s ease-in-out;
+  width: 300px;
+}
+tr:hover{
+  background-color: #ddd;
+}
+tr.influencer {
+  width: 300px;
+}
+
+//CONTENT
 .fas{
   position: relative;
+  left:60px;
   z-index: 2;
   display: block;
   text-align: right;
 }
-
-
-
 .avatar {
-    height: 35px;
-    width: 35px;
-    border-radius: 50%;
-    background-size: cover;
-  }
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background-size: cover;
+}
 
+.tab{
+  float: left
+}
+.tab-btn{
+  margin: 50px;
+}
 
+button{
+  display:block;
+  margin-bottom: 20px;
+}
 
-  .container{
-    overflow: hidden
-  }
-  .tab{
-    float: left
-  }
-  .tab-btn{
-    margin: 50px;
-  }
-  button{
-    display:block;
-    margin-bottom: 20px;
-  }
-  tr{
-    transition:all .25s ease-in-out
-  }
-  tr:hover{
-    background-color: #ddd;
-  }
+h3{
+  color: #383838;
+
+}

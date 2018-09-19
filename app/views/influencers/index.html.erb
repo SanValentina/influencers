@@ -1,30 +1,34 @@
 <div class="container">
   <div class="tab">
     <table id="table1">
-
-      <tr id="table1_row">
-        <% @influencers.each do |influencer| %>
-        <tr class="influencer">
-          <td>
-            <img src="https://via.placeholder.com/350x150" class="avatar"/> <br />
-          </td>
-          <td>
-            <h3 class="name"><%= influencer.name %></h3>
-            <small class="handle">
-              <i class="fab fa-instagram"></i>
-              <span class="media-handle"><%= influencer.social_media %></span>
-            </small>
-          </td>
-          <td class="addButton">
-            <i class="fas fa-plus"></i>
-          </td>
-        </tr>
-      <% end %>
+      <h3> Suggested Influencer </h3>
+        <tr id="table1_row">
+          <% @influencers.each do |influencer| %>
+          <tr class="influencer">
+            <td>
+              <img src="https://via.placeholder.com/350x150" class="avatar"/> <br />
+            </td>
+            <td>
+              <h3 class="name"><%= influencer.name %></h3>
+              <small class="handle">
+                <i class="fab fa-instagram"></i>
+                <span class="media-handle"><%= influencer.social_media %></span>
+              </small>
+            </td>
+            <td class="addButton">
+              <i class="fas fa-plus"></i>
+            </td>
+          </tr>
+        <% end %>
     </table>
   </div>
 
   <div class="tab">
     <table id="table2">
+      <h3 class="table_title"> Starred Influencer </h3>
+
+
+
     </table>
   </div>
 </div>
@@ -41,7 +45,7 @@
       var handle = $(parent).find('.media-handle').text()
       console.log({imageLink, name, handle})
 
-      $('#table2').append(`<tr>
+      $('#table2').append(`<tr id="table2_row">
           <td>
           <img src="${imageLink}" class="avatar"/> <br />
           </td>
@@ -52,6 +56,7 @@
               <span class="media-handle">${handle}</span>
             </small>
           </td>
+          <td><i class="fas fa-times"></i></td>
         </tr>`)
 
       // var selected = e.target.classList[0].replace('add_', '')
