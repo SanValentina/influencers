@@ -6,6 +6,7 @@
 .container {
     margin-right: 15px;
     margin-left: 15px;
+    margin-top:10px;
     overflow:hidden;
 }
 
@@ -41,8 +42,8 @@ tr.influencer {
   text-align: right;
 }
 img {
-  height: 70px;
-  width: 70px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
   background-size: cover;
 }
@@ -61,7 +62,6 @@ button{
 
 h3{
   color: #383838;
-
 }
 
 .vl {
@@ -74,3 +74,6 @@ h3{
     left: 120%;
     border-left: 2px dotted #cccccc;
     }
+.sortby{
+  margin-top:25px;
+}

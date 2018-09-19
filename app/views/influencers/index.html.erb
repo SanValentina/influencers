@@ -1,64 +1,23 @@
 <div class="container">
-  <div class="col-md-3">
-    <table id="table1">
-      <h3> Suggested Influencer </h3>
-        <tr id="table1_row">
-          <% @influencers.each do |influencer| %>
-          <tr>
-            <td>
-            <span class="avatar">
-              <%= image_tag influencer.influencer_instagram_profile_image %>
-            </span>
-            </td>
-            <td>
-              <h3 class="name"><%= influencer.influencer_full_name %></h3>
-              <small class="handle">
-                <i class="fab fa-instagram"></i>
-                <span class="media-handle"><%= influencer.influencer_instagram_username %></span>
-              </small>
-            </td>
-            <td class="addButton">
-              <i class="fas fa-plus"></i>
-            </td>
-          </tr>
-        <% end %>
-    </table>
-
-    <div class="vl"></div>
-
-  </div>
-
-
-  <div class="col-md-6">
-    <table id="table2">
-      <h3 class="table_title"> Starred Influencer </h3>
-
-    </table>
-  </div>
-
-  <div class="col-md-3">
-    Sort By:
-    <select>
-      <option>Engagement(High-Low)</option>
-    </select>
-  </div>
-
+  <%= render "table1" %>
+  <%= render "table2" %>
+  <%= render "sortby" %>
 </div>
 
-<!-- <script src="https://code.jquery.com/jquery-latest.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
   $(document).ready(function() {
+
+//ADD ROW
     $(".addButton").click(function(e){
       var parent = e.target.parentNode.parentNode
-      //console.log(parent);
       var imageLink = $(parent).find('.avatar').find('img').attr('src');
       var name = $(parent).find('.name').text()
       var handle = $(parent).find('.media-handle').text()
-      var followers = $(parent).find('').text()
-      var engagement = $(parent).find('').text()
+      var follower = $(parent).find('.follower').text()
+      var engagement = $(parent).find('engagement').text()
 
-      console.log({imageLink, name, handle})
+      console.log({imageLink, name, handle, follower, engagement})
 
       $('#table2').append(`<tr id="table2_row">
 
@@ -73,17 +32,22 @@
               <span class="media-handle">${handle}</span>
             </small>
           </td>
-          <td>
-            <h3>${followers}</h3>
+
+           <td>
+              <h3 class="follower">${follower}</h3>
+               <small class="title">Followers</small>
           </td>
-          <td>
-            <h3>${engagement}</h3>
+
+           <td>
+            <h3 class="engagement">${engagement} %</h3>
+             <small class="title">Engagement</small>
           </td>
+
           <td class="deleteButton">
             <i class="fas fa-times"></i>
           </td>
         </tr>`)
-
+//DELETE
       $(".deleteButton").click(function(){
       $(this).parents('tr').first().remove();
       });
@@ -91,6 +55,7 @@
 
 
 //SORT
+
     // $(document).ready(function() {
   //Set id field to 1
   var id = $('#UserID');
@@ -131,35 +96,35 @@
     return rows;
   }
 
-  function sortByText(rows, selector, ascending) {
-    rows.sort(function(a, b) {
-      var textA = $(selector, a).text();
-      var textB = $(selector, b).text();
-      if (ascending)
-        return textA.localeCompare(textB);
-      else
-        return textB.localeCompare(textA);
-    });
+  // function sortByText(rows, selector, ascending) {
+  //   rows.sort(function(a, b) {
+  //     var textA = $(selector, a).text();
+  //     var textB = $(selector, b).text();
+  //     if (ascending)
+  //       return textA.localeCompare(textB);
+  //     else
+  //       return textB.localeCompare(textA);
+  //   });
 
-    return rows;
-  }
+  //   return rows;
+  // }
 
   function sortAllBy(field) {
-    var rows = $('table tbody tr').toArray();
+    var rows = $('table2 tr').toArray();
 
     switch (field) {
-      case 'ID':
-        rows = sortByNumber(rows, 'td.col-id', true);
+      case 'Engagement':
+        rows = sortByNumber(rows, 'td.col-engagement', true);
         break;
-      case 'Name':
-        rows = sortByText(rows, 'td.col-name', true);
-        break;
-      case 'Occupation':
-        rows = sortByText(rows, 'td.col-occupation', true);
-        break;
-      default:
-        console.error('Undefined sort field ' + field);
-        break;
+      // case 'Name':
+      //   rows = sortByText(rows, 'td.col-name', true);
+      //   break;
+      // case 'Occupation':
+      //   rows = sortByText(rows, 'td.col-occupation', true);
+      //   break;
+      // default:
+      //   console.error('Undefined sort field ' + field);
+      //   break;
     }
 
     for (var i = 0; i < rows.length; i++) {

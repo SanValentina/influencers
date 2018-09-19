@@ -1,0 +1,37 @@
+<div class="col-md-3">
+    <table id="table1">
+      <h3> Suggested Influencer </h3>
+        <tr id="table1_row">
+          <% @influencers.each do |influencer| %>
+          <tr>
+            <td>
+            <span class="avatar">
+              <%= image_tag influencer.influencer_instagram_profile_image %>
+            </span>
+            </td>
+            <td>
+              <h3 class="name"><%= influencer.influencer_full_name %></h3>
+              <small class="handle">
+                <i class="fab fa-instagram"></i>
+                <span class="media-handle"><%= influencer.influencer_instagram_username %></span>
+              </small>
+            </td>
+
+            <td>
+              <h3 class="follower"><%= influencer.statistics_followers %></h3>
+            </td>
+
+            <td>
+              <h3 class="engagement"><%= influencer.statistics_engagement %></h3>
+            </td>
+
+            <td class="addButton">
+              <i class="fas fa-plus"></i>
+            </td>
+          </tr>
+        <% end %>
+    </table>
+
+    <div class="vl"></div>
+
+  </div>
