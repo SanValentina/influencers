@@ -1,3 +1,44 @@
-// Place all the styles related to the Influencers controller here.
+// Place all the styles related to the app_influencers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.container {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+.fas{
+  position: relative;
+  z-index: 2;
+  display: block;
+  text-align: right;
+}
+
+
+
+.avatar {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-size: cover;
+  }
+
+
+
+  .container{
+    overflow: hidden
+  }
+  .tab{
+    float: left
+  }
+  .tab-btn{
+    margin: 50px;
+  }
+  button{
+    display:block;
+    margin-bottom: 20px;
+  }
+  tr{
+    transition:all .25s ease-in-out
+  }
+  tr:hover{
+    background-color: #ddd;
+  }
