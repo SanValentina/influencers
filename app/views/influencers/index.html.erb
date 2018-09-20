@@ -1,8 +1,27 @@
 <div class="container">
-  <%= render "table1" %>
-  <%= render "table2" %>
-  <%= render "sortby" %>
+  <div class="row">
+    <!-- <div class="col-md-">
+      <h3>Suggested Influencer</h3>
+    </div> -->
+
+    <!-- <div class="col-md-7">
+      <h3>Starred Influencer</h3>
+    </div> -->
+
+    <div class="col-md-2">
+      <%= render "sortby" %>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <%= render "table1" %>
+    <%= render "table2" %>
+
+  </div>
 </div>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
@@ -25,7 +44,7 @@
 
       console.log({imageLink, name, handle, follower, engagement})
 
-      $('#table2').append(`<tr id="table2_row">
+      $('#table2').append(`<tr class="table2_row">
 
         <td>
           <img src="${imageLink}" />
@@ -42,7 +61,7 @@
          <td>
             <h3 class="follower">${follower}</h3>
             <small class="title">Followers</small>
-        </td>
+          </td>
 
 
          <td>
@@ -57,9 +76,6 @@
 
       </tr>`)
 
-
-
-
 //DELETE
       $(".deleteButton").click(function(){
       $(this).parents('tr').first().remove();
@@ -68,37 +84,13 @@
 
 //SORT
 
-    // $(document).ready(function() {
-  //Set id field to 1
-  var id = $('#UserID');
-  id.val("1");
-
-  // //Add 1 to the id in textbox
-  // function incID(){
-  //   var str = id.val();
-  //   var int = parseInt(str);
-  //   var idVal = int + 1;
-  //   id.val(idVal.toString());
-  // }
-  // //When button clicked
-  // $('button').on('click', function(){
-  //   //create a new object
-  //   var obj = new Object();
-  //   //pass value dynamically from input box
-  //   obj.id = $('#UserID').val();
-  //   obj.name = $('#UserName').val();
-  //   obj.occupation = $("#UserOccupation").val();
-  //   //display data to the table
-  //   var addrow = "<tr><td class='col-id'>" + obj.id + "</td><td class='col-name'>" + obj.name + "</td><td class='col-occupation'>"+ obj.occupation +"</td></tr>";
-  //   $("table tbody").append(addrow);
-  //   //Add 1 to id field
-  //   incID();
-  // });
 
   function sortByNumber(rows, selector, ascending) {
     rows.sort(function(a, b) {
-      var numberA = parseInt($(selector, a).text(), 10);
-      var numberB = parseInt($(selector, b).text(), 10);
+      var numberA = parseFloat($(selector, a).text(), 10);
+      var numberB = parseFloat($(selector, b).text(), 10);
+
+
       if (ascending)
         return numberA - numberB;
       else
@@ -108,44 +100,22 @@
     return rows;
   }
 
-  // function sortByText(rows, selector, ascending) {
-  //   rows.sort(function(a, b) {
-  //     var textA = $(selector, a).text();
-  //     var textB = $(selector, b).text();
-  //     if (ascending)
-  //       return textA.localeCompare(textB);
-  //     else
-  //       return textB.localeCompare(textA);
-  //   });
-
-  //   return rows;
-  // }
 
   function sortAllBy(field) {
-    var rows = $('table2 tr').toArray();
+    var rows = $('.table2_row').toArray();
 
-    switch (field) {
-      case 'Engagement':
-        rows = sortByNumber(rows, 'td.col-engagement', true);
-        break;
-      // case 'Name':
-      //   rows = sortByText(rows, 'td.col-name', true);
-      //   break;
-      // case 'Occupation':
-      //   rows = sortByText(rows, 'td.col-occupation', true);
-      //   break;
-      // default:
-      //   console.error('Undefined sort field ' + field);
-      //   break;
-    }
+    rows = sortByNumber(rows, 'td .engagement', true);
 
+    $('#table2').html('');
     for (var i = 0; i < rows.length; i++) {
-      $('table tbody').append(rows[i]);
+      $('#table2').append(rows[i]);
     }
   }
 
   $('select').on('change', function() {
-    sortAllBy(this.value);
+    if (this.value === 'engagement') {
+      sortAllBy(this.value);
+    }
   });
 });
 
