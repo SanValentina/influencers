@@ -1,14 +1,15 @@
 <div class="container">
+
   <div class="row">
-    <!-- <div class="col-md-">
+    <div class="col-md-4">
       <h3>Suggested Influencer</h3>
-    </div> -->
+    </div>
 
-    <!-- <div class="col-md-7">
+    <div class="col-md-5">
       <h3>Starred Influencer</h3>
-    </div> -->
+    </div>
 
-    <div class="col-md-2">
+    <div class="col-md-3">
       <%= render "sortby" %>
     </div>
   </div>
@@ -21,8 +22,6 @@
   </div>
 </div>
 
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
   $(document).ready(function() {
@@ -33,14 +32,9 @@
       var imageLink = $(parent).find('.avatar').find('img').attr('src');
       var name = $(parent).find('.name').text()
       var handle = $(parent).find('.media-handle').text()
-
       var influencer_data = $(parent).find('.influencer_data');
       var follower = influencer_data.data('follower');
       var engagement  = influencer_data.data('engagement');
-
-
-      // var follower = $(parent).find('.follower').text()
-      // var engagement = $(parent).find('.engagement').text()
 
       console.log({imageLink, name, handle, follower, engagement})
 
@@ -58,13 +52,13 @@
           </small>
         </td>
 
-         <td>
+         <td class="follower-td">
             <h3 class="follower">${follower}</h3>
             <small class="title">Followers</small>
           </td>
 
 
-         <td>
+         <td class="engagement-td">
           <h3 class="engagement">${engagement} %</h3>
           <small class="title">Engagement</small>
         </td>
@@ -76,48 +70,38 @@
 
       </tr>`)
 
-//DELETE
+//DELETE ROW
       $(".deleteButton").click(function(){
       $(this).parents('tr').first().remove();
       });
     });
 
-//SORT
-
-
+//SORT ROWS
   function sortByNumber(rows, selector, ascending) {
     rows.sort(function(a, b) {
       var numberA = parseFloat($(selector, a).text(), 10);
       var numberB = parseFloat($(selector, b).text(), 10);
-
-
       if (ascending)
         return numberA - numberB;
       else
         return numberB - numberA;
     });
-
     return rows;
   }
 
-
   function sortAllBy(field) {
     var rows = $('.table2_row').toArray();
-
     rows = sortByNumber(rows, 'td .engagement', true);
-
     $('#table2').html('');
     for (var i = 0; i < rows.length; i++) {
       $('#table2').append(rows[i]);
     }
   }
-
   $('select').on('change', function() {
     if (this.value === 'engagement') {
       sortAllBy(this.value);
     }
   });
 });
-
 
 </script>

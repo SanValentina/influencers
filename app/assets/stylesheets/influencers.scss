@@ -12,35 +12,47 @@
 
 
 //TABLE
+#table1{
+  // margin-right: 40px;
+}
 #table2 {
   margin-left: 80px;
+  // width: 75%;
 }
-  .table_title{
-    margin-left: 80px;
-  }
 
-#table2_row{
-  margin-right:80px;
+.table_title{
+  margin-left: 80px;
 }
-tr{
+
+tr.table2_row{
+  // margin-right:80px;
+  // display:flex;
+  width: 200px;
+
+}
+
+tr {
   transition:all .25s ease-in-out;
   width: 300px;
 }
+
 tr:hover{
   background-color: #ddd;
 }
+
 tr.influencer {
   width: 300px;
 }
 
 //CONTENT
-.fas{
-  position: relative;
-  left:60px;
-  z-index: 2;
-  display: block;
-  text-align: right;
-}
+// .fas{
+//   position: relative;
+//   left:60px;
+//   z-index: 2;
+//   display: block;
+//   text-align: right;
+// }
+
 img {
   height: 60px;
   width: 60px;
@@ -71,9 +83,29 @@ h3{
     top: 0;
     margin-top:30px;
     bottom: 0;
-    left: 120%;
+    left: 90%;
     border-left: 2px dotted #cccccc;
     }
+
 .sortby{
   margin-top:25px;
+}
+
+.name{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.follower-td{
+  padding-left: 320px;
+  padding-right: 10px;
+}
+
+.engagement-td{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.fab{
+  padding-left:10px;
 }
