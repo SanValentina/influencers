@@ -14,45 +14,57 @@
       var imageLink = $(parent).find('.avatar').find('img').attr('src');
       var name = $(parent).find('.name').text()
       var handle = $(parent).find('.media-handle').text()
-      var follower = $(parent).find('.follower').text()
-      var engagement = $(parent).find('engagement').text()
+
+      var influencer_data = $(parent).find('.influencer_data');
+      var follower = influencer_data.data('follower');
+      var engagement  = influencer_data.data('engagement');
+
+
+      // var follower = $(parent).find('.follower').text()
+      // var engagement = $(parent).find('.engagement').text()
 
       console.log({imageLink, name, handle, follower, engagement})
 
       $('#table2').append(`<tr id="table2_row">
 
-          <td>
-          <span class="avatar"><img src="${imageLink}" /></span>
-          </td>
+        <td>
+          <img src="${imageLink}" />
+        </td>
 
-          <td>
-            <h3 class="name">${name}</h3>
-            <small class="handle">
-              <i class="fab fa-instagram"></i>
-              <span class="media-handle">${handle}</span>
-            </small>
-          </td>
+        <td>
+          <h3 class="name">${name}</h3>
+          <small class="handle">
+            <i class="fab fa-instagram"></i>
+            <span class="media-handle">${handle}</span>
+          </small>
+        </td>
 
-           <td>
-              <h3 class="follower">${follower}</h3>
-               <small class="title">Followers</small>
-          </td>
+         <td>
+            <h3 class="follower">${follower}</h3>
+            <small class="title">Followers</small>
+        </td>
 
-           <td>
-            <h3 class="engagement">${engagement} %</h3>
-             <small class="title">Engagement</small>
-          </td>
 
-          <td class="deleteButton">
-            <i class="fas fa-times"></i>
-          </td>
-        </tr>`)
+         <td>
+          <h3 class="engagement">${engagement} %</h3>
+          <small class="title">Engagement</small>
+        </td>
+
+
+        <td class="deleteButton">
+          <i class="fas fa-times"></i>
+        </td>
+
+      </tr>`)
+
+
+
+
 //DELETE
       $(".deleteButton").click(function(){
       $(this).parents('tr').first().remove();
       });
     });
-
 
 //SORT
 
