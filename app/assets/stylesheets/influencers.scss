@@ -10,10 +10,10 @@
     overflow:hidden;
 }
 
-
 //TABLE
 #table1{
-  // margin-right: 40px;
+  border-right: 2px dotted #cccccc;
+
 }
 #table2 {
   margin-left: 80px;
@@ -36,8 +36,15 @@ tr {
   width: 300px;
 }
 
-tr:hover{
+.fas:hover{
   background-color: #ddd;
+}
+
+.title{
+  float:left;
+}
+.fas{
+    margin-right:10px;
 }
 
 tr.influencer {
@@ -45,13 +52,6 @@ tr.influencer {
 }
 
 //CONTENT
-// .fas{
-//   position: relative;
-//   left:60px;
-//   z-index: 2;
-//   display: block;
-//   text-align: right;
-// }
 
 img {
   height: 60px;
@@ -76,19 +76,9 @@ h3{
   color: #383838;
 }
 
-.vl {
-    content:"";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    margin-top:30px;
-    bottom: 0;
-    left: 90%;
-    border-left: 2px dotted #cccccc;
-    }
-
 .sortby{
   margin-top:25px;
+  float:right;
 }
 
 .name{

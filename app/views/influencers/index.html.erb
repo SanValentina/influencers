@@ -1,4 +1,4 @@
-<div class="container">
+ <div class="container">
 
   <div class="row">
     <div class="col-md-4">
@@ -25,7 +25,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
   $(document).ready(function() {
-
 //ADD ROW
     $(".addButton").click(function(e){
       var parent = e.target.parentNode.parentNode
@@ -35,15 +34,11 @@
       var influencer_data = $(parent).find('.influencer_data');
       var follower = influencer_data.data('follower');
       var engagement  = influencer_data.data('engagement');
-
       console.log({imageLink, name, handle, follower, engagement})
-
       $('#table2').append(`<tr class="table2_row">
-
         <td>
           <img src="${imageLink}" />
         </td>
-
         <td>
           <h3 class="name">${name}</h3>
           <small class="handle">
@@ -51,31 +46,23 @@
             <span class="media-handle">${handle}</span>
           </small>
         </td>
-
          <td class="follower-td">
             <h3 class="follower">${follower}</h3>
             <small class="title">Followers</small>
           </td>
-
-
          <td class="engagement-td">
           <h3 class="engagement">${engagement} %</h3>
           <small class="title">Engagement</small>
         </td>
-
-
         <td class="deleteButton">
           <i class="fas fa-times"></i>
         </td>
-
       </tr>`)
-
 //DELETE ROW
       $(".deleteButton").click(function(){
       $(this).parents('tr').first().remove();
       });
     });
-
 //SORT ROWS
   function sortByNumber(rows, selector, ascending) {
     rows.sort(function(a, b) {
@@ -88,7 +75,6 @@
     });
     return rows;
   }
-
   function sortAllBy(field) {
     var rows = $('.table2_row').toArray();
     rows = sortByNumber(rows, 'td .engagement', true);
@@ -103,5 +89,4 @@
     }
   });
 });
-
 </script>
